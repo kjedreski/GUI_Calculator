@@ -1,0 +1,8 @@
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\bin\Release\calc.exe.config
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\bin\Release\calc.exe
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\bin\Release\calc.pdb
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.Form1.resources
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.Properties.Resources.resources
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.csproj.GenerateResource.Cache
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.exe
+c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.pdb
