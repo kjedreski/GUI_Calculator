@@ -6,3 +6,11 @@ c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.
 c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.csproj.GenerateResource.Cache
 c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.exe
 c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Release\calc.pdb
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\bin\Release\calc.exe.config
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Release\calc.exe
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Release\calc.pdb
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\bin\Release\calc.exe
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\bin\Release\calc.pdb
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Release\calc.Form1.resources
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Release\calc.Properties.Resources.resources
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Release\calc.csproj.GenerateResource.Cache

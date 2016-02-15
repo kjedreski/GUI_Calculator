@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace calc
 {
@@ -25,11 +26,20 @@ namespace calc
         }
 
         /*prompts user to load in DLL file, enforces DLL */
-        private void displayFileStuff()
+        private string displayFileStuff()
         {
             OpenFileDialog openFile = new OpenFileDialog();
+            //filter to DLL's only
             openFile.Filter = "DLL | *.dll";
+            //open file explorer
             openFile.ShowDialog();
+            //grab file location of selection
+            string file = openFile.FileName;
+            //TEST: shows file name
+            MessageBox.Show(file);
+            return file;
+      
+
         }
 
         private void openFileDialog_FileOk(object sender, CancelEventArgs e)
@@ -46,19 +56,37 @@ namespace calc
             System.IO.FileInfo fileInfo = new System.IO.FileInfo(file);
             System.IO.FileStream fileStream = fileInfo.OpenRead();
             fileStream.Close(); */
+            MessageBox.Show("test");
         }
 
         private void openFileDialog_FileOk_1(object sender, CancelEventArgs e)
         {
-
+            MessageBox.Show("test1");
 
         }
 
         //when you change Top right from File to Open
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*When forms loads, prompt user to find the DLL file */
-             displayFileStuff();
+            /*When forms loads, prompt user to find the DLL file, load string file path */
+             string file = displayFileStuff();
+             var DLL = Assembly.LoadFile(file);
+            /*First, load all class names into an array */
+             foreach ( Type t in DLL.GetExportedTypes())
+             {
+                 MessageBox.Show(t.ToString());
+             }
+             /*Type TypeD = d.GetType();
+             // load all properties into array
+             PropertyInfo[] properties = TypeD.GetProperties();
+             //Load all methods in array
+             Console.WriteLine("Meta Data for {0}", TypeD);
+             MethodInfo[] methods = TypeD.GetMethods();
+             foreach (MethodInfo method in methods)
+             {
+                 Console.WriteLine(method.Name + "() " + method.ReturnType);
+             } */
+
         }
     }
 }
