@@ -15,3 +15,4 @@ C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.Properties.Resources.
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.csproj.GenerateResource.Cache
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.exe
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.pdb
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.csprojResolveAssemblyReference.cache

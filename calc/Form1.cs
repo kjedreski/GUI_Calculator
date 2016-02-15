@@ -71,21 +71,12 @@ namespace calc
             /*When forms loads, prompt user to find the DLL file, load string file path */
              string file = displayFileStuff();
              var DLL = Assembly.LoadFile(file);
-            /*First, load all class names into an array */
+            /*First, get a classname, and 
+             * then show all of it's methods along with signatures */
              foreach ( Type t in DLL.GetExportedTypes())
              {
                  MessageBox.Show(t.ToString());
              }
-             /*Type TypeD = d.GetType();
-             // load all properties into array
-             PropertyInfo[] properties = TypeD.GetProperties();
-             //Load all methods in array
-             Console.WriteLine("Meta Data for {0}", TypeD);
-             MethodInfo[] methods = TypeD.GetMethods();
-             foreach (MethodInfo method in methods)
-             {
-                 Console.WriteLine(method.Name + "() " + method.ReturnType);
-             } */
 
         }
     }
