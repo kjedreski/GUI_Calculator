@@ -7,12 +7,15 @@ c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Debug\calc.Pr
 c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Debug\calc.csproj.GenerateResource.Cache
 c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Debug\calc.exe
 c:\users\kaj61\documents\visual studio 2012\Projects\calc\calc\obj\Debug\calc.pdb
+C:\Users\kaj61.CS\Desktop\WP_dynamic_calc\calc\bin\Debug\calc.exe.config
+C:\Users\kaj61.CS\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.exe
+C:\Users\kaj61.CS\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.pdb
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\bin\Debug\calc.exe.config
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\bin\Debug\calc.exe
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\bin\Debug\calc.pdb
+C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.csprojResolveAssemblyReference.cache
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.Form1.resources
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.Properties.Resources.resources
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.csproj.GenerateResource.Cache
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.exe
 C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.pdb
-C:\Users\kaj61\Desktop\WP_dynamic_calc\calc\obj\Debug\calc.csprojResolveAssemblyReference.cache

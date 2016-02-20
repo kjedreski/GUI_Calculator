@@ -71,12 +71,41 @@ namespace calc
             /*When forms loads, prompt user to find the DLL file, load string file path */
              string file = displayFileStuff();
              var DLL = Assembly.LoadFile(file);
-            /*First, get a classname, and 
-             * then show all of it's methods along with signatures */
-             foreach ( Type t in DLL.GetExportedTypes())
+            /*store all types in this array */
+             List<string> types = new List<string>();
+             List<string> methods = new List<string>();
+            string[] test;
+            // lists are dynamically sized arrays
+            // .ToArray at end.
+             // find all types and stow in list,
+             foreach ( Type t in DLL.GetTypes())
              {
-                 MessageBox.Show(t.ToString());
+                 types.Add(t.ToString());
+                 /*First, let's gather names of all methods */
+                // MessageBox.Show();
+                 //dynamically find all types
+                 foreach (MethodInfo m in t.GetMethods())
+                 {
+                     methods.Add(m.ToString());
+                 }
              }
+            //Now make both lists arrays
+             string[] Types = types.ToArray();
+             string[] Methods = methods.ToArray();
+            // populate labels
+             label2.Text = Types[0];
+             label3.Text = Types[1];
+
+
+        }
+        /*checklistbox, populate it with items from DLL */
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
 
         }
     }
