@@ -69,32 +69,73 @@ namespace calc
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*When forms loads, prompt user to find the DLL file, load string file path */
-             string file = displayFileStuff();
-             var DLL = Assembly.LoadFile(file);
+            string file = displayFileStuff();
+            var DLL = Assembly.LoadFile(file);
             /*store all types in this array */
-             List<string> types = new List<string>();
-             List<string> methods = new List<string>();
+            List<string> types = new List<string>();
+            List<string> methods = new List<string>();
             string[] test;
             // lists are dynamically sized arrays
             // .ToArray at end.
-             // find all types and stow in list,
-             foreach ( Type t in DLL.GetTypes())
-             {
-                 types.Add(t.ToString());
-                 /*First, let's gather names of all methods */
+            // find all types and stow in list,
+            foreach (Type t in DLL.GetTypes())
+            {
+                types.Add(t.ToString());
+                /*First, let's gather names of all methods */
                 // MessageBox.Show();
-                 //dynamically find all types
-                 foreach (MethodInfo m in t.GetMethods())
-                 {
-                     methods.Add(m.ToString());
-                 }
-             }
+                //dynamically find all types
+                foreach (MethodInfo m in t.GetMethods())
+                {
+                    methods.Add(m.ToString());
+                }
+            }
             //Now make both lists arrays
-             string[] Types = types.ToArray();
-             string[] Methods = methods.ToArray();
-            // populate labels
-             label2.Text = Types[0];
-             label3.Text = Types[1];
+            string[] Types = types.ToArray();
+            string[] Methods = methods.ToArray();
+        
+
+
+            //dynamically Create checklist boxes for each TYPE and labels
+            CheckedListBox box;
+            CheckBox SubBox;
+            Label lab;
+            // list to store all the CheckedListBox's
+            List<CheckedListBox> BoxList = new List<CheckedListBox>();
+            //dfgfd
+            for (int i = 0; i < Types.Length; i++)
+            {
+                //dynamically add labels
+                lab = new Label();
+                lab.Text = Types[i];
+                lab.Location = new Point(i*150, 75);
+
+                //dynamically add CheckedListBoxes
+                box = new CheckedListBox();
+                box.Name = "CheckedListBox" + i.ToString();
+                box.Tag = "CheckedListBox"+i.ToString();
+                box.AutoSize = true;
+                box.Location = new Point(i*150, 100); 
+                this.Controls.Add(box);
+                this.Controls.Add(lab);
+                // add this Control box to dynamic list
+                BoxList.Add(box);
+            }
+            //make BoxList an array
+            CheckedListBox[] BoxArray = BoxList.ToArray();
+
+            // dynamically add methods as checklistsboxes
+            //TODO: Parse out the raw stuff.
+            for (int i = 0; i < BoxArray.Length; i++)
+            {
+                for (int d =0; d <Methods.Length; d++)
+                {
+                    //TODO: Parse here.
+                    //TODO: Seperate Simple and Complex.
+                    BoxArray[i].Items.Add(Methods[d]);
+                }
+            }
+
+            
 
 
         }
