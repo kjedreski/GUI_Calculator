@@ -94,7 +94,7 @@ namespace calc
             string[] Methods = methods.ToArray();
         
 
-
+            /* 
             //dynamically Create checklist boxes for each TYPE and labels
             CheckedListBox box;
             CheckBox SubBox;
@@ -134,6 +134,7 @@ namespace calc
                     BoxArray[i].Items.Add(Methods[d]);
                 }
             }
+             * */
 
             
 
@@ -147,6 +148,43 @@ namespace calc
 
         private void label2_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            /*on click make calc */
+            // checkedListBox1 is Simple operations
+            // checkedListBox2 is Complex operations
+            if (checkedListBox1.CheckedItems.Count > 0)
+            {
+                foreach (object itemChecked in checkedListBox1.CheckedItems)
+                {
+                    MessageBox.Show(itemChecked.ToString());
+                }
+            }
+            if (checkedListBox2.CheckedItems.Count > 0)
+            {
+                foreach (object itemChecked in checkedListBox2.CheckedItems)
+                {
+                    MessageBox.Show(itemChecked.ToString());
+                }
+            }
 
         }
     }
