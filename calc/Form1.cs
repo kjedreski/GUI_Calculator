@@ -20,6 +20,8 @@ namespace calc
         string[] Methods2;
         List<string> box1 = new List<string>();
         List<string> box2 = new List<string>();
+        string file;
+        string Tname1;
         
         public Form1()
         {
@@ -91,8 +93,8 @@ namespace calc
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             /*When forms loads, prompt user to find the DLL file, load string file path */
-            string file = displayFileStuff();
-            var DLL = Assembly.LoadFile(file);
+             file = displayFileStuff();
+             var DLL = Assembly.LoadFile(file);
 
             //richTextBox1.Text = "kjhdslkjfhsdlkjhflkjdshfhds";
            
@@ -108,7 +110,9 @@ namespace calc
            // label4.Text = DLL.GetName;
             // lists are dynamically sized arrays
             // .ToArray at end.
-            // find all types and stow in list,
+            // find all types and stow in list
+
+
             foreach (Type t in DLL.GetTypes())
             {
                 types.Add(t.ToString());
@@ -251,10 +255,17 @@ namespace calc
         /*Simple Operation buttons */
         private void button5_Click(object sender, EventArgs e)
         {
+
             int arg1 = Convert.ToInt32(textBox1.Text);
             int arg2 = Convert.ToInt32(textBox2.Text);
 
             Type typeC = Type.GetType(Types[0]);
+
+             foreach (MethodInfo method in typeC.GetMethods())
+            {
+                MessageBox.Show(method.ToString());
+            }
+
             //MessageBox.Show(typeC.GetMethod("Add"));
             MethodInfo obj = typeC.GetMethod("Add");
             AnswerBox.Text = Convert.ToString(obj.Invoke(obj,new object[]{arg1,arg2}));
