@@ -13,6 +13,14 @@ namespace calc
 {
     public partial class Form1 : Form
     {
+        /*Methods 1 has all methods for Simple */
+        /*Methods 2 has all methods for Complex */
+        string[] Types;
+        string[] Methods1;
+        string[] Methods2;
+        List<string> box1 = new List<string>();
+        List<string> box2 = new List<string>();
+        
         public Form1()
         {
             InitializeComponent();
@@ -22,7 +30,6 @@ namespace calc
         {
         // make combo box non editable (top left).
         comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-   
         }
 
         /*prompts user to load in DLL file, enforces DLL */
@@ -71,10 +78,18 @@ namespace calc
             /*When forms loads, prompt user to find the DLL file, load string file path */
             string file = displayFileStuff();
             var DLL = Assembly.LoadFile(file);
+            //richTextBox1.Text = "kjhdslkjfhsdlkjhflkjdshfhds";
+           
             /*store all types in this array */
+            /*methods1, is simple.
+             * methods2 is complex 
+             */
             List<string> types = new List<string>();
-            List<string> methods = new List<string>();
+            List<string> methods1 = new List<string>();
+            List<string> methods2 = new List<string>();
             string[] test;
+            int counter = 0;
+           // label4.Text = DLL.GetName;
             // lists are dynamically sized arrays
             // .ToArray at end.
             // find all types and stow in list,
@@ -84,14 +99,28 @@ namespace calc
                 /*First, let's gather names of all methods */
                 // MessageBox.Show();
                 //dynamically find all types
+                richTextBox1.Text += t.ToString() + '\n'+'\n';
                 foreach (MethodInfo m in t.GetMethods())
                 {
-                    methods.Add(m.ToString());
+                    if (counter == 0)
+                    {
+                        methods1.Add(m.ToString());
+                        richTextBox1.Text += m.ToString() + '\n';
+                    }
+                    else if (counter == 1)
+                    {
+                        methods2.Add(m.ToString());
+                        richTextBox1.Text += m.ToString() + '\n';
+                    }
                 }
+                counter++;
+                richTextBox1.Text += '\n';
             }
             //Now make both lists arrays
-            string[] Types = types.ToArray();
-            string[] Methods = methods.ToArray();
+             Types = types.ToArray();
+             Methods2 = methods2.ToArray();
+             Methods1 = methods1.ToArray();
+          
         
 
             /* 
@@ -169,23 +198,76 @@ namespace calc
         private void button1_Click(object sender, EventArgs e)
         {
             /*on click make calc */
-            // checkedListBox1 is Simple operations
-            // checkedListBox2 is Complex operations
+            // box1 is Simple operations
+            // box2 is Complex operations
             if (checkedListBox1.CheckedItems.Count > 0)
             {
                 foreach (object itemChecked in checkedListBox1.CheckedItems)
                 {
-                    MessageBox.Show(itemChecked.ToString());
+                    //test msg
+                    //MessageBox.Show(itemChecked.ToString());
+                    box1.Add(itemChecked.ToString());
                 }
             }
             if (checkedListBox2.CheckedItems.Count > 0)
             {
                 foreach (object itemChecked in checkedListBox2.CheckedItems)
                 {
-                    MessageBox.Show(itemChecked.ToString());
+                    //test msg
+                    //MessageBox.Show(itemChecked.ToString());
+                    box2.Add(itemChecked.ToString());
                 }
             }
+            // throw ALL items that are checked in lists, and convert to array
+            string[] SimpleBox = box1.ToArray();
+            string[] ComplexBox = box2.ToArray();
 
+            /*Now invoke reflection and instantiate a calculator */
+            /*Methods1 is Simple.  Methods2 is Complex. */
+            /*BIG ASS LOOP */
+            foreach (string method in SimpleBox)
+            {
+                /*Instantiate a Simple calculator real time */
+                if (method == "Add")
+                {
+                    
+                }
+                else if (method == "Sub")
+                {
+
+                }
+                else if (method == "Multiply")
+                {
+
+                }
+                else if (method == "Divide")
+                {
+
+                }
+
+            }
+            foreach (string method in ComplexBox)
+            {
+                /*Now invoke reflection and instantiate a calculator */
+                /*Methods1 is Simple.  Methods2 is Complex. */
+                /*Instantiate a Complex calculator real time */
+                if (method == "AddC")
+                {
+
+                }
+                else if (method == "SubC")
+                {
+
+                }
+                else if (method == "MultiplyC")
+                {
+
+                }
+                else if (method == "DivideC")
+                {
+
+                }
+            }
         }
     }
 }
