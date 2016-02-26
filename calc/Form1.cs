@@ -26,8 +26,23 @@ namespace calc
             InitializeComponent();
         }
 
+        private void hide_AllOps()
+        {
+            button2.Hide();
+            button3.Hide();
+            button4.Hide();
+            button5.Hide();
+        }
+
+        private void rsetLists()
+        {
+            box1.Clear();
+            box2.Clear();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            hide_AllOps();
         // make combo box non editable (top left).
         comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -78,6 +93,7 @@ namespace calc
             /*When forms loads, prompt user to find the DLL file, load string file path */
             string file = displayFileStuff();
             var DLL = Assembly.LoadFile(file);
+
             //richTextBox1.Text = "kjhdslkjfhsdlkjhflkjdshfhds";
            
             /*store all types in this array */
@@ -120,52 +136,9 @@ namespace calc
              Types = types.ToArray();
              Methods2 = methods2.ToArray();
              Methods1 = methods1.ToArray();
+             
           
         
-
-            /* 
-            //dynamically Create checklist boxes for each TYPE and labels
-            CheckedListBox box;
-            CheckBox SubBox;
-            Label lab;
-            // list to store all the CheckedListBox's
-            List<CheckedListBox> BoxList = new List<CheckedListBox>();
-            //dfgfd
-            for (int i = 0; i < Types.Length; i++)
-            {
-                //dynamically add labels
-                lab = new Label();
-                lab.Text = Types[i];
-                lab.Location = new Point(i*150, 75);
-
-                //dynamically add CheckedListBoxes
-                box = new CheckedListBox();
-                box.Name = "CheckedListBox" + i.ToString();
-                box.Tag = "CheckedListBox"+i.ToString();
-                box.AutoSize = true;
-                box.Location = new Point(i*150, 100); 
-                this.Controls.Add(box);
-                this.Controls.Add(lab);
-                // add this Control box to dynamic list
-                BoxList.Add(box);
-            }
-            //make BoxList an array
-            CheckedListBox[] BoxArray = BoxList.ToArray();
-
-            // dynamically add methods as checklistsboxes
-            //TODO: Parse out the raw stuff.
-            for (int i = 0; i < BoxArray.Length; i++)
-            {
-                for (int d =0; d <Methods.Length; d++)
-                {
-                    //TODO: Parse here.
-                    //TODO: Seperate Simple and Complex.
-                    BoxArray[i].Items.Add(Methods[d]);
-                }
-            }
-             * */
-
-            
 
 
         }
@@ -197,27 +170,26 @@ namespace calc
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // reset and hide all available operations
+            // reset  lists
+            hide_AllOps();
+            rsetLists();
+
             /*on click make calc */
             // box1 is Simple operations
             // box2 is Complex operations
-            if (checkedListBox1.CheckedItems.Count > 0)
-            {
                 foreach (object itemChecked in checkedListBox1.CheckedItems)
                 {
                     //test msg
                     //MessageBox.Show(itemChecked.ToString());
                     box1.Add(itemChecked.ToString());
                 }
-            }
-            if (checkedListBox2.CheckedItems.Count > 0)
-            {
                 foreach (object itemChecked in checkedListBox2.CheckedItems)
                 {
                     //test msg
                     //MessageBox.Show(itemChecked.ToString());
                     box2.Add(itemChecked.ToString());
                 }
-            }
             // throw ALL items that are checked in lists, and convert to array
             string[] SimpleBox = box1.ToArray();
             string[] ComplexBox = box2.ToArray();
@@ -225,25 +197,30 @@ namespace calc
             /*Now invoke reflection and instantiate a calculator */
             /*Methods1 is Simple.  Methods2 is Complex. */
             /*BIG ASS LOOP */
+
+            //MessageBox.Show(Types[0]);
             foreach (string method in SimpleBox)
             {
                 /*Instantiate a Simple calculator real time */
-                if (method == "Add")
+                //save code below for later ***********
+                if (method == "Addition")
                 {
-                    
+                    button5.Show();
                 }
-                else if (method == "Sub")
+                else if (method == "Subtract")
                 {
-
+                    button3.Show();
                 }
                 else if (method == "Multiply")
                 {
-
+                    button2.Show();
                 }
                 else if (method == "Divide")
                 {
-
+                    button4.Show();
                 }
+                //**************************************
+                //groupBox1.Hide();
 
             }
             foreach (string method in ComplexBox)
@@ -267,7 +244,38 @@ namespace calc
                 {
 
                 }
-            }
+            }  
         }
+
+
+        /*Simple Operation buttons */
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int arg1 = Convert.ToInt32(textBox1.Text);
+            int arg2 = Convert.ToInt32(textBox2.Text);
+
+            Type typeC = Type.GetType(Types[0]);
+            //MessageBox.Show(typeC.GetMethod("Add"));
+            MethodInfo obj = typeC.GetMethod("Add");
+            AnswerBox.Text = Convert.ToString(obj.Invoke(obj,new object[]{arg1,arg2}));
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+        /*End simple operation button controls */
+
     }
 }
