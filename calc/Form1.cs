@@ -22,7 +22,10 @@ namespace calc
         List<string> box2 = new List<string>();
         string file;
         string Tname1;
-        
+        Assembly DLL;
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -94,7 +97,7 @@ namespace calc
         {
             /*When forms loads, prompt user to find the DLL file, load string file path */
              file = displayFileStuff();
-             var DLL = Assembly.LoadFile(file);
+              DLL = Assembly.LoadFile(file);
 
             //richTextBox1.Text = "kjhdslkjfhsdlkjhflkjdshfhds";
            
@@ -255,21 +258,14 @@ namespace calc
         /*Simple Operation buttons */
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Type typeC = DLL.GetType("SimpleCalc.SimpleMath");
             int arg1 = Convert.ToInt32(textBox1.Text);
             int arg2 = Convert.ToInt32(textBox2.Text);
 
-            Type typeC = Type.GetType(Types[0]);
-
-             foreach (MethodInfo method in typeC.GetMethods())
-            {
-                MessageBox.Show(method.ToString());
-            }
-
             //MessageBox.Show(typeC.GetMethod("Add"));
-            MethodInfo obj = typeC.GetMethod("Add");
-            AnswerBox.Text = Convert.ToString(obj.Invoke(obj,new object[]{arg1,arg2}));
-
+            Object obj = Activator.CreateInstance(typeC);
+            MethodInfo method = typeC.GetMethod("Add");
+            AnswerBox.Text = Convert.ToString(method.Invoke(obj, new object[]{arg1,arg2}));
         }
 
         private void button3_Click(object sender, EventArgs e)
