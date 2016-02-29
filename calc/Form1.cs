@@ -37,6 +37,12 @@ namespace calc
             button3.Hide();
             button4.Hide();
             button5.Hide();
+            // ************
+            button6.Hide();
+            button7.Hide();
+            button8.Hide();
+            button9.Hide();
+
         }
 
         private void rsetLists()
@@ -235,50 +241,72 @@ namespace calc
                 /*Now invoke reflection and instantiate a calculator */
                 /*Methods1 is Simple.  Methods2 is Complex. */
                 /*Instantiate a Complex calculator real time */
-                if (method == "AddC")
+                if (method == "Addition")
                 {
-
+                    button6.Show();
                 }
-                else if (method == "SubC")
+                else if (method == "Subtract")
                 {
-
+                    button8.Show();
                 }
-                else if (method == "MultiplyC")
+                else if (method == "Multiply")
                 {
-
+                    button9.Show();
                 }
-                else if (method == "DivideC")
+                else if (method == "Divide")
                 {
-
+                    button7.Show();
                 }
             }  
         }
 
+        private void clearTextBoxes()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
+        }
 
-        /*Simple Operation buttons */
-        private void button5_Click(object sender, EventArgs e)
+        private void invokeSimple(string operation)
         {
             Type typeC = DLL.GetType("SimpleCalc.SimpleMath");
-            int arg1 = Convert.ToInt32(textBox1.Text);
-            int arg2 = Convert.ToInt32(textBox2.Text);
-
+            int arg1 = Convert.ToInt32(textBox2.Text);
+            int arg2 = Convert.ToInt32(textBox1.Text);
+            // clear text boxes here.
+            clearTextBoxes();
             //MessageBox.Show(typeC.GetMethod("Add"));
             Object obj = Activator.CreateInstance(typeC);
-            MethodInfo method = typeC.GetMethod("Add");
-            AnswerBox.Text = Convert.ToString(method.Invoke(obj, new object[]{arg1,arg2}));
+            MethodInfo method = typeC.GetMethod(operation);
+            AnswerBox.Text = Convert.ToString(method.Invoke(obj, new object[] { arg1, arg2 }));
+        }
+
+        /*Simple Operation  */
+        private void button5_Click(object sender, EventArgs e)
+        {
+            invokeSimple("Add");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            invokeSimple("Subtract");
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            invokeSimple("Multiply");
 
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+            invokeSimple("Divide");
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
         {
 
         }
