@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
-
+using System.Numerics;
 namespace calc
 {
     public partial class Form1 : Form
@@ -264,6 +264,10 @@ namespace calc
         {
             textBox1.Text = "";
             textBox2.Text = "";
+            Real1.Text = "";
+            Complex1.Text = "";
+            Real2.Text = "";
+            Complex2.Text = "";
         }
 
         private void invokeSimple(string operation)
@@ -277,6 +281,21 @@ namespace calc
             Object obj = Activator.CreateInstance(typeC);
             MethodInfo method = typeC.GetMethod(operation);
             AnswerBox.Text = Convert.ToString(method.Invoke(obj, new object[] { arg1, arg2 }));
+        }
+
+        private void invokeComplex(string operation)
+        {
+            Type typeC = DLL.GetType("ComplexCalc.ComplexMath");
+            // complex num 1
+            Complex arg1 = new Complex(Convert.ToDouble(Real1.Text), Convert.ToDouble(Complex1.Text));
+            Complex arg2 = new Complex(Convert.ToDouble(Real2.Text), Convert.ToDouble(Complex2.Text));
+            // clear text boxes here.
+            clearTextBoxes();
+            //MessageBox.Show(typeC.GetMethod("Add"));
+            Object obj = Activator.CreateInstance(typeC);
+            MethodInfo method = typeC.GetMethod(operation);
+            Result2.Text = Convert.ToString(method.Invoke(obj, new object[] { arg1, arg2 }));
+
         }
 
         /*Simple Operation  */
@@ -300,7 +319,12 @@ namespace calc
         {
             invokeSimple("Divide");
         }
-
+        /*End simple operation button controls */
+        /// <summary>
+        ///  ignore these elow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
@@ -310,7 +334,30 @@ namespace calc
         {
 
         }
-        /*End simple operation button controls */
+        // okay, stop ignoring
+
+
+        // COMPLEX operations start here *****************
+        private void button6_Click(object sender, EventArgs e)
+        {
+            invokeComplex("Add");
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            invokeComplex("Subtract");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            invokeComplex("Multiply");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            invokeComplex("Divide");
+        }
+
 
     }
 }
