@@ -33,11 +33,14 @@ namespace calc
 
         private void hide_AllOps()
         {
+            //These are the operation buttons,
+            // Toggling this function will hide them from user
+            /*Simple  */
             button2.Hide();
             button3.Hide();
             button4.Hide();
             button5.Hide();
-            // ************
+            /*Complex */
             button6.Hide();
             button7.Hide();
             button8.Hide();
@@ -69,7 +72,7 @@ namespace calc
             //grab file location of selection
             string file = openFile.FileName;
             //TEST: shows file name
-            MessageBox.Show(file);
+           // MessageBox.Show(file);
             return file;
       
 
@@ -77,24 +80,10 @@ namespace calc
 
         private void openFileDialog_FileOk(object sender, CancelEventArgs e)
         {
-            /*Once calc.dll is opened -- use Reflection API to display
-             * all class names from DLL as well as parameters and methods 
-             */
-            /* 
-             * Allow user to pick any number of methods to construct a calulator, dynamically
-             */
-            /*
-            this.Activate();
-            file = openFileDialog.OpenFile();
-            System.IO.FileInfo fileInfo = new System.IO.FileInfo(file);
-            System.IO.FileStream fileStream = fileInfo.OpenRead();
-            fileStream.Close(); */
-            MessageBox.Show("test");
         }
 
         private void openFileDialog_FileOk_1(object sender, CancelEventArgs e)
         {
-            MessageBox.Show("test1");
 
         }
 
@@ -262,6 +251,7 @@ namespace calc
 
         private void clearTextBoxes()
         {
+            /* */
             textBox1.Text = "";
             textBox2.Text = "";
             Real1.Text = "";
@@ -320,11 +310,7 @@ namespace calc
             invokeSimple("Divide");
         }
         /*End simple operation button controls */
-        /// <summary>
-        ///  ignore these elow
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+     
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
